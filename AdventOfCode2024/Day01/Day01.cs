@@ -61,6 +61,6 @@ internal class Day01 : DayBase
             }
         }
         
-        AnsiConsole.MarkupLine($"Similarity total: {similarityTotal}");
+        AnsiConsole.MarkupLineInterpolated($"Similarity total: [green]{similarityTotal}[/]");
     }
 }
