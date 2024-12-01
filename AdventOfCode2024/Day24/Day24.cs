@@ -3,6 +3,12 @@
 namespace AdventOfCode2024.Day24;
 internal class Day24 : DayBase
 {
+
+    public Day24()
+    {
+        Ready = true;
+    }
+
     private Grid<sbyte> _map;
 
     [MemberNotNull(nameof(_map))]
@@ -32,6 +38,6 @@ internal class Day24 : DayBase
     public override async Task RunPart2()
     {
         PrintStart(2);
-        await Init(2, true);
+        await Init(1, true);
     }
 }

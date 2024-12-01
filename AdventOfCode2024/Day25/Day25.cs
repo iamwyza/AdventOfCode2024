@@ -3,6 +3,12 @@
 namespace AdventOfCode2024.Day25;
 internal class Day25 : DayBase
 {
+
+    public Day25()
+    {
+        Ready = true;
+    }
+
     private Grid<sbyte> _map;
 
     [MemberNotNull(nameof(_map))]
@@ -10,7 +16,7 @@ internal class Day25 : DayBase
     {
         _map = new Grid<sbyte>();
 
-        var lines = await GetLines();
+        var lines = useTestData ? await GetTestLines(part) : await GetLines();
 
         foreach (var line in lines)
         {
@@ -32,6 +38,6 @@ internal class Day25 : DayBase
     public override async Task RunPart2()
     {
         PrintStart(2);
-        await Init(2, true);
+        await Init(1, true);
     }
 }

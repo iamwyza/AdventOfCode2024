@@ -14,6 +14,9 @@ public abstract class DayBase : IDay
             var day = int.Parse(solution.Namespace?.Replace("AdventOfCode2024.Day", "") ?? "-1");
             if (day <= 0) continue;
 
+            // Don't show future days yet even though we found classes for them.  They are just from last year copied over.
+            if (DateTime.Now.Year == 2024 && day > DateTime.Now.Day) continue;
+
             if (Activator.CreateInstance(solution) is not IDay instance)
             {
                 throw new Exception($"Couldn't create instance for type {solution.FullName}");
