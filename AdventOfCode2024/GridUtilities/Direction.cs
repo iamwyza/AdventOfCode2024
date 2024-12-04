@@ -22,18 +22,19 @@ public enum Direction : int
 internal static class DirectionExtensions
 {
 
-    //Currently only supports cardinal directions.
     public static Direction GetDirection(Coord from, Coord to)
     {
        
             if (from.X > to.X)
             {
-                return Direction.East;
+                if (from.Y == to.Y ) return Direction.East;
+                return from.Y > to.Y ? Direction.SouthEast : Direction.NorthEast;
             }
 
             if (from.X < to.X)
             {
-                return Direction.West;
+                if (from.Y == to.Y ) return Direction.West;
+                return from.Y > to.Y ? Direction.SouthWest : Direction.NorthWest;
             }
 
             if (from.Y > to.Y)

@@ -82,6 +82,10 @@ internal static class CoordExtensions
             Direction.East => new Coord(coord.X + 1, coord.Y),
             Direction.South => new Coord(coord.X, coord.Y + 1),
             Direction.West => new Coord(coord.X - 1, coord.Y),
+            Direction.NorthEast => new Coord(coord.X + 1, coord.Y - 1),
+            Direction.NorthWest => new Coord(coord.X - 1, coord.Y - 1),
+            Direction.SouthEast => new Coord(coord.X + 1, coord.Y + 1),
+            Direction.SouthWest => new Coord(coord.X - 1, coord.Y + 1),
             _ => throw new ArgumentOutOfRangeException(nameof(direction), direction, null)
         };
     }
