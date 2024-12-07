@@ -72,7 +72,8 @@ internal class Day06 : DayBase
         var max = _map.Count();
         var outputMap = _map.CopyGrid((_, val) => val);
         outputMap.DefaultPrintConfig = _map.DefaultPrintConfig;
-        
+        var workingMap = _map.CopyGrid((_, val) => val);
+
         foreach (var spotInMap in GetOnlyPossiblyPaths().Where(x => x.Value == 3))
         {
             
@@ -82,8 +83,12 @@ internal class Day06 : DayBase
             
             var limiter = 0;
             
-            var workingMap = _map.CopyGrid((_, val) => val);
             workingMap.DefaultPrintConfig = _map.DefaultPrintConfig;
+            // reset between loops rather than re-allocating the entire thing.
+            foreach (var valueTuple in workingMap)
+            {
+                workingMap[valueTuple.Item1] = _map[valueTuple.Item1];
+            }
             
             workingMap[spotInMap.Item1] = 1;
             
@@ -118,7 +123,6 @@ internal class Day06 : DayBase
         }
         
        
-        
         outputMap.PrintMap();
 
         var moves = outputMap.Count(x => x.Value == 4);

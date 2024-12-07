@@ -1,4 +1,6 @@
-﻿DayBase.ScanForSolutions();
+﻿using System.Diagnostics;
+
+DayBase.ScanForSolutions();
 
 var choice = "";
 
@@ -32,6 +34,9 @@ while (choice != "0")
 
     var input = choice.Split('-', 2).Select(int.Parse).ToArray();
 
+    var stopwatch = Stopwatch.StartNew();
+    stopwatch.Start();
+    
     if (input[1] == 1)
     {
         try
@@ -56,6 +61,11 @@ while (choice != "0")
     }
 
     Console.WriteLine();
+    
+    stopwatch.Stop();
+    AnsiConsole.MarkupLineInterpolated($"Took [green]{stopwatch.ElapsedMilliseconds}[/] ms.");
+    Console.WriteLine();
+
 
     last = choice;
 }
