@@ -239,6 +239,14 @@ internal class Grid<T> : IEnumerable<(Coord Coordinate, T Value)> //where T : IC
 
     }
 
+    public void DebugPrintMap(Func<T, Coord, (char letter, Color color, string? extraText)>? config = null,
+        bool printRowLabel = false, bool printEmptyRow = true, int yMin = 0, int yMax = 0)
+    {
+        if (DayBase.DebugOutput)
+        {
+            PrintMap(config, printRowLabel, printEmptyRow, yMin, yMax);
+        }
+    }
 
     public void PrintMap(Func<T, Coord, (char letter, Color color, string? extraText)>? config = null, bool printRowLabel = false, bool printEmptyRow = true, int yMin = 0, int yMax = 0)
     {

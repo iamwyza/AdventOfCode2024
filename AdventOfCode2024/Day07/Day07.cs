@@ -1,5 +1,6 @@
 ﻿namespace AdventOfCode2024.Day07;
 
+// https://adventofcode.com/2024/day/7
 internal class Day07 : DayBase
 {
     public Day07()

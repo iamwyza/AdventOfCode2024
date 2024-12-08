@@ -6,7 +6,6 @@ var choice = "";
 
 string? last = null;
 
-
 while (choice != "0")
 {
     var prompt = new SelectionPrompt<string>()

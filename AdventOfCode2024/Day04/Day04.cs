@@ -1,6 +1,8 @@
 ﻿using AdventOfCode2024.GridUtilities;
 
 namespace AdventOfCode2024.Day04;
+
+// https://adventofcode.com/2024/day/4
 internal class Day04 : DayBase
 {
     public Day04()

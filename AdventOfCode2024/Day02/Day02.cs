@@ -1,10 +1,8 @@
-﻿using System.Diagnostics;
-using AdventOfCode2024.GridUtilities;
+﻿namespace AdventOfCode2024.Day02;
 
-namespace AdventOfCode2024.Day02;
+// https://adventofcode.com/2024/day/2
 internal class Day02 : DayBase
 {
-
     public Day02()
     {
         Ready = true;

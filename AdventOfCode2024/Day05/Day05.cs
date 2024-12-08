@@ -1,9 +1,8 @@
-﻿using AdventOfCode2024.GridUtilities;
+﻿namespace AdventOfCode2024.Day05;
 
-namespace AdventOfCode2024.Day05;
+// https://adventofcode.com/2024/day/5
 internal class Day05 : DayBase
 {
-
     public Day05()
     {
         Ready = true;

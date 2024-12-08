@@ -4,6 +4,8 @@ namespace AdventOfCode2024;
 public abstract class DayBase : IDay
 {
     public static Dictionary<int, IDay> Days = new ();
+    
+    public static bool DebugOutput = false;
 
     // Poor man's DI ;) 
     public static void ScanForSolutions()

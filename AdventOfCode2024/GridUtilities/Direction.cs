@@ -1,6 +1,4 @@
-﻿using static System.Collections.Specialized.BitVector32;
-
-namespace AdventOfCode2024.GridUtilities;
+﻿namespace AdventOfCode2024.GridUtilities;
 
 [Flags]
 public enum Direction : int

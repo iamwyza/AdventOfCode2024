@@ -2,6 +2,8 @@
 #pragma warning disable CS8509 // The switch expression does not handle all possible values of its input type (it is not exhaustive).
 
 namespace AdventOfCode2024.Day06;
+
+// https://adventofcode.com/2024/day/6
 internal class Day06 : DayBase
 {
 

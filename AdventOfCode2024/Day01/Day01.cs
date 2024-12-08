@@ -1,4 +1,6 @@
 ﻿namespace AdventOfCode2024.Day01;
+
+// https://adventofcode.com/2024/day/1
 internal class Day01 : DayBase
 {
 
