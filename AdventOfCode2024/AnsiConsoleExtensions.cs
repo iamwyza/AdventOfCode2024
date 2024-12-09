@@ -74,4 +74,11 @@ public static class DebugAnsiConsole
         if (DayBase.DebugOutput)
             AnsiConsole.Write(text);
     }
+    
+    /// <inheritdoc cref="AnsiConsole.WriteLine(string)"/>
+    public static void WriteLine(string text)
+    {
+        if (DayBase.DebugOutput)
+            AnsiConsole.WriteLine(text);
+    }
 }
