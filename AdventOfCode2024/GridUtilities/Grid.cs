@@ -278,9 +278,21 @@ internal class Grid<T> : IEnumerable<(Coord Coordinate, T Value)> //where T : IC
                 for (int xCol = Bounds.minX; xCol <= Bounds.maxX; xCol++)
                 {
                     var setting = config(Map[xCol, yRow], new Coord(xCol, yRow));
-
-                    stringBuilder.Append($"[{setting.color.ToMarkup()}]{setting.letter}[/]");
+                    
+                    stringBuilder.Append($"[{setting.color.ToMarkup()}]");
+                    if (setting.letter is '[' or ']')
+                    {
+                        var value = Markup.Escape($"{setting.letter}");
+                        stringBuilder.Append(value);
+                    }
+                    else
+                    {
+                        stringBuilder.Append($"{setting.letter}");
+                    }
+                    stringBuilder.Append("[/]");
                 }
+                
+                
                 AnsiConsole.MarkupInterpolated($"{stringBuilder} [yellow]{config(Map[0, yRow], new Coord(0, yRow)).extraText}[/]");
                 Console.WriteLine();
             }

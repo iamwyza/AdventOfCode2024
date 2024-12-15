@@ -74,18 +74,18 @@ internal readonly struct Coord : IEqualityComparer<Coord>, IEquatable<Coord>
 
 internal static class CoordExtensions
 {
-    public static Coord Move(this Coord coord, Direction direction)
+    public static Coord Move(this Coord coord, Direction direction, int amount = 1)
     {
         return direction switch
         {
-            Direction.North => new Coord(coord.X, coord.Y - 1),
-            Direction.East => new Coord(coord.X + 1, coord.Y),
-            Direction.South => new Coord(coord.X, coord.Y + 1),
-            Direction.West => new Coord(coord.X - 1, coord.Y),
-            Direction.NorthEast => new Coord(coord.X + 1, coord.Y - 1),
-            Direction.NorthWest => new Coord(coord.X - 1, coord.Y - 1),
-            Direction.SouthEast => new Coord(coord.X + 1, coord.Y + 1),
-            Direction.SouthWest => new Coord(coord.X - 1, coord.Y + 1),
+            Direction.North => new Coord(coord.X, coord.Y - amount),
+            Direction.East => new Coord(coord.X + amount, coord.Y),
+            Direction.South => new Coord(coord.X, coord.Y + amount),
+            Direction.West => new Coord(coord.X - amount, coord.Y),
+            Direction.NorthEast => new Coord(coord.X + amount, coord.Y - amount),
+            Direction.NorthWest => new Coord(coord.X - amount, coord.Y - amount),
+            Direction.SouthEast => new Coord(coord.X + amount, coord.Y + amount),
+            Direction.SouthWest => new Coord(coord.X - amount, coord.Y + amount),
             _ => throw new ArgumentOutOfRangeException(nameof(direction), direction, null)
         };
     }
