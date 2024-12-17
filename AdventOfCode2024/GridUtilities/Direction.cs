@@ -6,20 +6,23 @@ public enum Direction : int
     None = 0,
     Special = 1,
     North = 2,
-    East = 4,
-    South = 8,
-    West = 16,
-    NorthEast = 32,
-    NorthWest = 64,
-    NorthSouth = 128,
-    EastWest = 256,
-    SouthEast = 512,
-    SouthWest = 1024
+    NorthEast = 4,
+    East = 8,
+    SouthEast = 16,
+    South = 32,
+    SouthWest = 64,
+    West = 128,
+    NorthWest = 256,
+    NorthSouth = 512,
+    EastWest = 1024,
 }
 
 internal static class DirectionExtensions
 {
 
+    private static ReadOnlySpan<int> Directions =>
+        Enum.GetValues<Direction>().Where(d => (int)d > 1 && (int)d < 512).Select(x => (int)x).ToArray().AsSpan();
+    
     public static Direction GetDirection(Coord from, Coord to)
     {
        
@@ -83,6 +86,65 @@ internal static class DirectionExtensions
         }
 
         throw new Exception($"Attempted to move from {fromX},{fromY} to {toX},{toY}");
+    }
+
+    public static Direction Turn(this Direction direction, int turns, bool clockwise = true, bool cardinalOnly = true)
+    {
+        turns = cardinalOnly ? turns * 2 : turns;
+		
+        if (clockwise)
+        {
+            var temp = (Directions.IndexOf((int)direction) + turns) % Directions.Length;
+            
+            return (Direction)Directions[temp];
+        }
+        else
+        {
+            var temp = (Directions.IndexOf((int)direction) - turns) % Directions.Length;
+            if (temp < 0) 
+                temp += Directions.Length;
+            
+            return (Direction)Directions[temp];
+        }
+    }
+
+    public static int NumberOfRotations(this Direction from, Direction to)
+    {
+        if (from == to) return 0;
+        
+        switch (from)
+        {
+            case Direction.North:
+                return to switch
+                {
+                    Direction.East => 1,
+                    Direction.South => 2,
+                    Direction.West => 1
+                };
+            case Direction.East:
+                return to switch
+                {
+                    Direction.North => 1,
+                    Direction.South => 1,
+                    Direction.West => 2
+                };
+            case Direction.South:
+                return to switch
+                {
+                    Direction.West => 1,
+                    Direction.North => 2,
+                    Direction.East => 1,
+                };
+            case Direction.West:
+                return to switch
+                {
+                    Direction.North => 1,
+                    Direction.South => 1,
+                    Direction.East => 2
+                };
+            default:
+                throw new Exception("Only Cardinal Directions supported");
+        }
     }
 
     public static char DirectionString(this Direction direction)
